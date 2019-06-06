@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg">
+<symbol id="arrow-small" viewBox="0 0 13.2 13.4">
+<title>Arrow</title>
+<path id="Shape" style="fill:none;stroke-linecap:square;stroke-miterlimit:10;" d="M0.5,6.7h10.9 M7,0.7l5.5,6
+    l-5.5,6"/>
+
+</symbol>
+<symbol id="burger" viewBox="0 0 17 12">
+<rect y="5" width="17" height="2"/>
+<rect width="17" height="2"/>
+<rect y="10" width="17" height="2"/>
+
+</symbol>
+<symbol id="close" viewBox="0 0 14 14">
+    <!-- Generator: Sketch 55 (78076) - https://sketchapp.com -->
+    <title>X</title>
+    <desc>Created with Sketch.</desc>
+    <g id="X" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <path d="M1,1 L13,13" id="Path" stroke="#000000" stroke-width="2"/>
+        <path d="M13,1 L1,13" id="Path" stroke="#000000" stroke-width="2"/>
+    </g>
+
+</symbol>
+<symbol id="profile" viewBox="0 0 17 19">
+    <!-- Generator: Sketch 55 (78076) - https://sketchapp.com -->
+    <title>User_</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+        <g id="User_Menu_Button" transform="translate(-15.000000, -14.000000)" stroke="#000000">
+            <g id="Group-6">
+                <g id="User_" transform="translate(16.000000, 15.000000)">
+                    <g id="user">
+                        <path d="M14.333333,16.1249996 L14.333333,14.333333 C14.333333,12.3543127 12.7290201,10.7499998 10.7499998,10.7499998 L3.58333325,10.7499998 C1.60431294,10.7499998 0,12.3543127 0,14.333333 L0,16.1249996" id="Path" stroke-width="2"/>
+                        <circle id="Oval" stroke-width="2" cx="7.1666665" cy="3.58333325" r="3.58333325"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+
+</symbol>
+<symbol id="search" viewBox="0 0 15 15">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>Oval</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Oval" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <circle stroke="#000000" stroke-width="0.833333333" cx="6.5" cy="6.5" r="5.5"/>
+        <path d="M14,14 L10.5,10.5" id="Path" stroke="#000000" stroke-width="0.833333333"/>
+    </g>
+
+</symbol>
+<symbol id="sticker-careful" viewBox="0 0 140 140">
+    <!-- Generator: Sketch 55 (78076) - https://sketchapp.com -->
+    <title>Sticker_happy Copy 3</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Stickers" transform="translate(-419.000000, -331.000000)">
+            <g id="Sticker_Fire" transform="translate(419.000000, 331.000000)">
+                <g id="Group-8">
+                    <circle id="Oval" fill="#6D2121" cx="70" cy="70" r="70"/>
+                    <path d="M70,12.7272727 C38.3090909,12.7272727 12.7272727,38.3090909 12.7272727,70 C12.7272727,101.690909 38.3090909,127.272727 70,127.272727 C101.690909,127.272727 127.272727,101.690909 127.272727,70 C127.272727,38.3090909 101.690909,12.7272727 70,12.7272727 Z M46.3811189,108.181818 C35.8566434,100.036364 31.8181818,85.2727273 31.8181818,76.2363636 C31.8181818,50.0181818 46.993007,34.8727273 52.1328671,31.8181818 C53.479021,39.8363636 66.8181818,58.6727273 66.8181818,69.7454545 C66.8181818,80.8181818 59.965035,84.2545455 54.2132867,86.5454545 C63.0244755,75.2181818 58.3741259,61.2181818 51.7657343,55.4909091 C57.1503497,73.3090909 49.0734266,84.7636364 44.6678322,65.1636364 C34.3881119,82.9818182 45.1573427,106.781818 46.3811189,108.181818 Z M106.615928,75.5596945 L62.4494365,99.2858479 C62.4494365,99.4100686 62.4494365,99.5342893 62.4494365,99.65851 C62.4494365,102.639807 59.1778446,105 55.0254394,105 C50.8730342,105 47.7272727,102.764027 47.7272727,99.7827307 C47.7272727,96.8014339 50.9988647,94.4412406 55.1512699,94.4412406 C56.283744,94.4412406 57.2903877,94.5654613 58.1712009,94.9381234 L103.721827,70.3424251 C105.231793,69.597101 106.993419,70.0939837 107.748402,71.5846321 C108.629215,72.9510598 108.125894,74.8143703 106.615928,75.5596945 Z" id="Shape" fill="#F64141" fill-rule="nonzero"/>
+                </g>
+            </g>
+        </g>
+    </g>
+
+</symbol></svg>

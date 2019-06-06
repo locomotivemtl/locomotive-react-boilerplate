@@ -1,0 +1,14 @@
+.o-transition {
+    position: relative;
+
+    &:not(:first-child) {
+
+    }
+}
+
+.o-transition-enter-active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}

@@ -1,0 +1,21 @@
+// ==========================================================================
+// Animations
+// ==========================================================================
+.u-anim {
+    @include anim($speed-slower, 0s);
+    @for $i from 1 through 6 {
+        &.-delay-#{$i}{
+            @include anim($speed-slower, $i*0.1s);
+        }
+    }
+
+}
+
+.u-anim-scroll {
+    @include anim-scroll($speed-slower, 0s);
+    @for $i from 1 through 6 {
+        &.-delay-#{$i}{
+            @include anim-scroll($speed-slower, $i*0.1s);
+        }
+    }
+}

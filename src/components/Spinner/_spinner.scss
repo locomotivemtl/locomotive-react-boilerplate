@@ -1,0 +1,48 @@
+.spinner_wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s $Power2EaseOut;
+
+    .o-transition-enter-active & {
+        opacity: 1;
+    }
+}
+
+.spinner {
+    width: 3.75em;
+    transform-origin: center;
+    animation: rotate 2s linear infinite;
+}
+
+.spinner_circle {
+    fill: none;
+    stroke: red;
+    stroke-width: 3;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 200;
+        stroke-dashoffset: -35px;
+    }
+    100% {
+        stroke-dashoffset: -125px;
+    }
+}

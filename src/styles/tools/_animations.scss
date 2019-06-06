@@ -1,0 +1,37 @@
+@mixin anim($duration: $speed-slower, $delay: 0s) {
+    opacity: 0;
+    transform: translateY($unit);
+    transition: opacity $duration $Power2EaseOut, transform $duration $Power2EaseOut;
+
+    .o-transition-enter-done &{
+        opacity: 1;
+        transform: none;
+        transition-delay: $delay;
+    }
+}
+
+
+@mixin anim-scroll($duration: $speed-slower, $delay: 0s) {
+    opacity: 0;
+    transform: translateY($unit);
+    transition: opacity $duration $Power2EaseOut, transform $duration $Power2EaseOut;
+
+    &.-parent {
+        .o-transition-enter-done .is-show &{
+            opacity: 1;
+            transform: none;
+            transition-delay: $delay;
+        }
+    }
+
+    &:not(.-parent) {
+        .o-transition-enter-done &.is-show{
+            opacity: 1;
+            transform: none;
+            transition-delay: $delay;
+        }
+    }
+
+
+}
+

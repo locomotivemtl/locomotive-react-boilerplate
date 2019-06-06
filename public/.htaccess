@@ -1,0 +1,37 @@
+#DirectoryIndex index.html index.php
+
+Header set Access-Control-Allow-Origin "*"
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    <IfModule mod_vhost_alias.c>
+        RewriteBase /
+    </IfModule>
+
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Headers *
+    </IfModule>
+
+    # Do not allow to use "index.php"
+    RewriteCond %{THE_REQUEST} ^.*/index\.php
+    RewriteRule ^(.*)index.html$ /$1 [R=301,L]
+
+    # Force SSL
+    #RewriteCond %{HTTPS} off
+    #RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Index is handled by React front-end
+    RewriteCond %{REQUEST_URI} ^\/$
+    RewriteRule ^ index.html [QSA,L]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.html [QSA,L]
+
+
+</IfModule>

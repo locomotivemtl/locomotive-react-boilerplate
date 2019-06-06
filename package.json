@@ -1,0 +1,56 @@
+{
+    "name": "locomotive-react-boilerplate",
+    "version": "1.0.0",
+    "private": true,
+    "dependencies": {
+        "axios": "^0.18.0",
+        "axios-cache-adapter": "^2.3.2",
+        "connected-react-router": "^6.4.0",
+        "dotenv": "^8.0.0",
+        "env-cmd": "^9.0.1",
+        "gsap": "^2.1.3",
+        "immutable": "^4.0.0-rc.12",
+        "node-sass": "^4.12.0",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
+        "react-redux": "^6.0.1",
+        "react-router-dom": "^5.0.0",
+        "react-sanfona": "^1.4.0",
+        "react-scripts": "3.0.1",
+        "react-transition-group": "^4.1.0",
+        "redux": "^4.0.1",
+        "redux-auth-wrapper": "^2.1.0",
+        "redux-logger": "^3.0.6",
+        "redux-thunk": "^2.3.0",
+        "svg-sprite-generator": "0.0.7"
+    },
+    "scripts": {
+        "start": "npm run start:js",
+        "build": "npm run build:css && npm run build:svg && build:js",
+        "start:js": "react-scripts start",
+        "build:js": "react-scripts build",
+        "build:css": "node-sass src/styles/ -o public/assets/styles/",
+        "watch:css": "npm run build:css && node-sass src/styles/ -o public/assets/styles/ --watch --recursive",
+        "build:svg": "svg-sprite-generate -d src/assets/icons -o public/assets/images/sprite.svg",
+        "build:staging": "dotenv -e .env.staging react-scripts build && rm -rf www/build && rm -rf www && mv build www && cp -r public/assets www/assets cp public/.htaccess www/.htaccess",
+        "build:production": "dotenv -e .env.production react-scripts build && rm -rf www/build && rm -rf www && mv build www && cp -r public/assets www/assets cp public/.htaccess www/.htaccess",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not ie <= 11",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}

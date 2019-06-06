@@ -1,0 +1,8 @@
+{
+    "home": {
+        "slug": "/"
+    },
+    "test": {
+        "slug": "/test"
+    }
+}
