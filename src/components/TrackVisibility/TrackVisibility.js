@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import IntersectionObserver from 'intersection-observer-polyfill';
 
 // React component
 class TrackVisibility extends Component {
@@ -20,19 +21,20 @@ class TrackVisibility extends Component {
                 }
             },
             {
-                root: null,
                 rootMargin: '0px',
                 threshold: 0.05,
             }
         )
 
-        if(this.ref.current) {
-            this.observer.observe(this.ref.current);
+        if(typeof this.ref.current === 'object') {
+            setTimeout(() => {
+                this.observer.observe(this.ref.current);
+            },600)
         }
     }
 
     componentWillUnmount() {
-        if(this.ref.current) {
+        if(typeof this.ref.current === 'object') {
             this.observer.unobserve(this.ref.current);
         }
     }

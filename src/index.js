@@ -1,3 +1,7 @@
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
+import svg4everybody from 'svg4everybody';
+
 import React from 'react'
 import { createBrowserHistory } from 'history'
 import { render } from 'react-dom'
@@ -38,6 +42,7 @@ store.dispatch(fetchSelf()).then(response => {
     /** Clean the existing token. */
     localStorage.removeItem('state.auth.tokens')
 }).then(() => {
+    svg4everybody();
     render(
         <Provider store={store}>
             <App history={history} location={history.location} />
