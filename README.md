@@ -1,3 +1,11 @@
+<p align="center">
+    <a href="https://github.com/locomotivemtl/locomotive-react-boilerplate">
+        <img src="https://user-images.githubusercontent.com/4596862/60541667-1cb8ef00-9ce0-11e9-8173-51468003a7e4.png" height="140">
+    </a>
+</p>
+<h1 align="center">Locomotive React Boilerplate</h1>
+<p align="center">Front-end boilerplate for React projects by Locomotive.</p>
+
 #locomotive-react-boilerplate
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
