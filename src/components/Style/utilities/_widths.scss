@@ -22,6 +22,6 @@ $widths-fractions: 1 2 3 4 5 6 10 !default;
 
 .u-1\/2\@from-small {
     @media (min-width: $from-small) {
-        width: span(1/2);
+        width: span(1/2) !important;
     }
 }

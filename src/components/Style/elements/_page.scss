@@ -32,19 +32,19 @@ html {
     }
 
     @media (min-width: $from-large) and (max-width: $to-huge) {
-        font-size: $font-size - 2; /* [1] */
+        font-size: $font-size; /* [1] */
     }
 
     @media (min-width: $from-huge) and (max-width: $to-gigantic) {
-        font-size: 16px;
-    }
-
-    @media (min-width: $from-gigantic) and (max-width: $to-colossal) {
         font-size: 18px;
     }
 
+    @media (min-width: $from-gigantic) and (max-width: $to-colossal) {
+        font-size: 21px;
+    }
+
     @media (min-width: $from-colossal) {
-        font-size: 22px;
+        font-size: 24px;
     }
 }
 
@@ -60,9 +60,14 @@ a {
     @include u-hocus {
         color: $link-hover-color;
     }
-
 }
 
-figure {
-    margin: 0 auto;
+main {
+    transition: opacity $speed $easing $speed;
+    opacity: 0;
+
+    .has-transition-enter-done & {
+        opacity: 1;
+        transition-delay: 0s;
+    }
 }

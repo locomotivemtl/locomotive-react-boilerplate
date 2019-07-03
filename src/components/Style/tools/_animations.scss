@@ -1,0 +1,35 @@
+@mixin anim($duration: $speed, $delay: 0s) {
+    opacity: 0;
+    transform: translateY(#{rem($unit)});
+    transition: opacity $duration $easing, transform $duration $easing;
+
+    .has-transition-enter-done & {
+        opacity: 1;
+        transform: none;
+        transition-delay: $delay;
+    }
+}
+
+
+@mixin anim-scroll($duration: $speed, $delay: 0s) {
+    opacity: 0;
+    transform: translateY(#{rem($unit)});
+    transition: opacity $duration $easing, transform $duration $easing;
+
+    &.-parent {
+        .has-transition-enter-done .is-inview & {
+            opacity: 1;
+            transform: none;
+            transition-delay: $delay;
+        }
+    }
+
+    &:not(.-parent) {
+        .has-transition-enter-done &.is-inview {
+            opacity: 1;
+            transform: none;
+            transition-delay: $delay;
+        }
+    }
+}
+
