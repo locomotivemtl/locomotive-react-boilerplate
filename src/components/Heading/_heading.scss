@@ -1,0 +1,45 @@
+@import "../Style/settings";
+
+$font-size-h1:  36px  !default;
+$font-size-h2:  28px  !default;
+$font-size-h3:  24px  !default;
+$font-size-h4:  20px  !default;
+$font-size-h5:  18px  !default;
+$font-size-h6:  16px  !default;
+
+@mixin h {
+    margin-top: 0;
+    line-height: $line-height-h;
+
+    &.-noMargin {
+        margin-bottom: 0;
+    }
+}
+
+.heading {
+    @include h;
+
+    &.-h1 {
+        font-size: rem($font-size-h1);
+    }
+
+    &.-h2 {
+        font-size: rem($font-size-h2);
+    }
+
+    &.-h3 {
+        font-size: rem($font-size-h3);
+    }
+
+    &.-h4 {
+        font-size: rem($font-size-h4);
+    }
+
+    &.-h5 {
+        font-size: rem($font-size-h5);
+    }
+
+    &.-h6 {
+        font-size: rem($font-size-h6);
+    }
+}

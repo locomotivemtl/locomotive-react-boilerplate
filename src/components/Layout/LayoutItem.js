@@ -1,9 +1,14 @@
 import React from 'react'
+import { Component } from '../Component'
 
-const LayoutItem = ({children, overrideClass}) =>
-
-    <div className={`layout_item ${overrideClass}`}>
-        {children}
-    </div>
+class LayoutItem extends Component {
+    render() {
+        return (
+            <div className={`layout_item${this.state.classNames}`}>
+                {this.props.children}
+            </div>
+        )
+    }
+}
 
 export default LayoutItem

@@ -1,48 +1,55 @@
-.spinner_wrapper {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s $Power2EaseOut;
-
-    .o-transition-enter-active & {
-        opacity: 1;
-    }
-}
+@import "../Style/settings";
 
 .spinner {
-    width: 3.75em;
-    transform-origin: center;
-    animation: rotate 2s linear infinite;
-}
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 4px;
+    transition: opacity $speed $easing;
 
-.spinner_circle {
-    fill: none;
-    stroke: red;
-    stroke-width: 3;
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-    stroke-linecap: round;
-    animation: dash 1.5s ease-in-out infinite;
-}
-
-@keyframes rotate {
-    100% {
-        transform: rotate(360deg);
+    .has-transition-enter-done & {
+        opacity: 0;
     }
 }
 
-@keyframes dash {
+.spinner_main {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(1);
+    transform-origin: center left;
+
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: $black;
+        content: "";
+        transform: scaleX(0);
+        transform-origin: center left;
+        animation: loading 1.5s $easing infinite forwards;
+    }
+}
+
+@keyframes loading {
     0% {
-        stroke-dasharray: 1, 200;
-        stroke-dashoffset: 0;
+        transform: translateX(0%) scaleX(0);
     }
-    50% {
-        stroke-dasharray: 90, 200;
-        stroke-dashoffset: -35px;
+
+    30% {
+        transform: translateX(0%) scaleX(1);
     }
+
+    80% {
+        transform: translateX(100%) scaleX(0);
+    }
+
     100% {
-        stroke-dashoffset: -125px;
+        transform: translateX(100%) scaleX(0);
     }
 }

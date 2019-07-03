@@ -1,36 +1,17 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
+import { Component } from '../Component'
 
-// React component
-export default class Example extends Component {
-    static propTypes = {
+import './_example.scss';
 
-    }
-
-    constructor(props) {
-        super(props)
-    }
-
+class Example extends Component {
     render() {
-
         return (
-            <div className="example">
-                <h1>
-                    Example
-                </h1>
+            <div className={`example${this.state.classNames}`}>
+
             </div>
         )
     }
 }
-
-// Function component
-const Example = ({ name }) =>
-
-    <div className="example">
-        <h1>
-            Example
-        </h1>
-    </div>
 
 export default Example
 

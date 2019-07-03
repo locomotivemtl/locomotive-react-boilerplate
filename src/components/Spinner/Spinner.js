@@ -1,12 +1,11 @@
 import React from 'react'
 
-// Function component
+import './_spinner.scss';
+
 const Spinner = () =>
 
-    <div className="spinner_wrapper">
-        <svg className="spinner" viewBox="25 25 50 50">
-            <circle className="spinner_circle" cx="50" cy="50" r="20"></circle>
-        </svg>
+    <div className="spinner">
+        <div className="spinner_main"></div>
     </div>
 
 export default Spinner

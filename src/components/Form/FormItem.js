@@ -1,16 +1,14 @@
 import React from 'react'
 import { Component } from '../Component'
 
-import './_layout.scss';
-
-class Layout extends Component {
+class FormLabel extends Component {
     render() {
         return (
-            <div className={`layout${this.state.classNames}`}>
+            <div className={`form_item${this.state.classNames}`}>
                 {this.props.children}
             </div>
         )
     }
 }
 
-export default Layout
+export default FormLabel

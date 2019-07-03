@@ -1,16 +1,17 @@
 import React from 'react'
 import { Component } from '../Component'
 
-import './_layout.scss';
+import './_container.scss';
 
-class Layout extends Component {
+class Container extends Component {
     render() {
         return (
-            <div className={`layout${this.state.classNames}`}>
+            <div className={`container${this.state.classNames}`}>
                 {this.props.children}
             </div>
         )
     }
 }
 
-export default Layout
+export default Container
+

@@ -1,0 +1,119 @@
+@import "../Style/settings";
+
+$input-icon-color: 424242; // No #
+
+.form {
+
+}
+
+// Item
+// ==========================================================================
+.form_item {
+    margin-bottom: rem(20px);
+}
+
+// Label
+// ==========================================================================
+.form_label {
+    display: block;
+}
+
+// Input
+// ==========================================================================
+.form_input {
+    padding: rem(10px);
+    border-width: 1px;
+    border-style: solid;
+    border-color: lightgray;
+    background-color: white;
+
+    &:focus {
+        border-color: gray;
+    }
+
+    &::placeholder {
+        color: gray;
+    }
+}
+
+// Checkbox
+// =============================================================================
+$checkbox: rem(18px);
+$checkbox-icon-color: $input-icon-color;
+
+.form_checkbox {
+    position: absolute;
+    width: 0;
+    opacity: 0;
+
+    &:focus {
+        + .form_checkboxLabel {
+            &::before {
+                border-color: gray;
+            }
+        }
+    }
+
+    &:checked {
+        + .form_checkboxLabel {
+            &::after {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    }
+}
+
+.form_checkboxLabel {
+    position: relative;
+    display: inline-block;
+    margin-right: 0.5em;
+    padding-left: ($checkbox + rem(20px));
+    text-align: left;
+    font-size: 1rem;
+
+    &::before,
+    &::after {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: inline-block;
+        padding: 0;
+        width: $checkbox;
+        height: $checkbox;
+        margin-top: (-$checkbox / 2);
+        content: "";
+    }
+
+    &::before {
+        background-color: $white;
+        transition: background-color $speed $easing;
+
+        &:hover {
+            background-color: $gray;
+        }
+    }
+
+    &::after {
+        border-color: transparent;
+        background-color: transparent;
+        background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20x%3D%220%22%20y%3D%220%22%20width%3D%2213%22%20height%3D%2210.5%22%20viewBox%3D%220%200%2013%2010.5%22%20enable-background%3D%22new%200%200%2013%2010.5%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20fill%3D%22%23#{$checkbox-icon-color}%22%20d%3D%22M4.8%205.8L2.4%203.3%200%205.7l4.8%204.8L13%202.4c0%200-2.4-2.4-2.4-2.4L4.8%205.8z%22%2F%3E%3C%2Fsvg%3E");
+        background-position: center;
+        background-size: rem(13px);
+        background-repeat: no-repeat;
+        opacity: 0;
+        transform: scale(0);
+        transition: transform $speed $easing, opacity $speed $easing;
+        transform-origin: bottom left;
+    }
+}
+
+
+// Text Area
+// =============================================================================
+.form_textarea {
+    @extend .form_input;
+
+    min-height: rem(100px);
+}

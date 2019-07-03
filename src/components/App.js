@@ -1,4 +1,4 @@
-import '../styles/main.scss';
+import './Style/index.scss';
 
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -46,7 +46,7 @@ const App = ({ history }) => {
                 <TransitionGroup>
                     <CSSTransition
                         timeout={{enter: 600, exit: 600}}
-                        classNames='o-transition'
+                        classNames="has-transition"
                         appear
                         key={location.key}
                     >
@@ -58,9 +58,7 @@ const App = ({ history }) => {
                         </Switch>
                     </CSSTransition>
                 </TransitionGroup>
-
             )} />
-
         </ConnectedRouter>
     )
 }

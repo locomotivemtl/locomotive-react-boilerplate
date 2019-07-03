@@ -1,0 +1,8 @@
+@import "../Style/settings";
+
+.view {
+    &.has-transition-enter {
+        height: 0;
+        overflow: hidden;
+    }
+}
