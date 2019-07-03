@@ -4,7 +4,7 @@
     </a>
 </p>
 <h1 align="center">Locomotive React Boilerplate</h1>
-<p align="center">Front-end boilerplate for React projects by Locomotive.</p>
+<p align="center">Boilerplate for React projects by Locomotive.</p>
 
 ## Installation
 ```sh
