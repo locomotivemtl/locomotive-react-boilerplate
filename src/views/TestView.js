@@ -1,20 +1,13 @@
-import React, { Component } from 'react'
-import { View } from '../components/View'
+import React from 'react'
+
 import { Container } from '../components/Container'
 import { Heading } from '../components/Heading'
+import { View } from '../components/View'
 
-class HomeView extends Component {
+export default () =>
 
-    render() {
-        return (
-            <View>
-                <Container>
-                    <Heading option="delay1" utility="anim" el="h1">Test view</Heading>
-                </Container>
-            </View>
-        )
-    }
-}
-
-
-export default HomeView
+    <View>
+        <Container>
+            <Heading option="delay1" utility="anim" el="h1">Test view</Heading>
+        </Container>
+    </View>

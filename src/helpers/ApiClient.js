@@ -16,7 +16,7 @@ class ApiClient {
     constructor() {
         this.accessToken = null
         const baseURL = `${process.env.REACT_APP_API_URL}/${process.env.REACT_APP_API_VERSION}/`
-        this.client = setup(this.addTokenToConfig({
+        this.client = setup(this.addAccessTokenToConfig({
             baseURL: baseURL,
             headers: {
                 'Cache-Control': 'no-cache',
@@ -24,12 +24,7 @@ class ApiClient {
             },
             json: true,
             cache: {
-                debug: true,
-                exclude: {
-                    paths: [
-                        `^${baseURL}users/self`
-                    ]
-                }
+                debug: true
             }
         }))
         this.client.interceptors.response.use(
@@ -53,7 +48,7 @@ class ApiClient {
         }
     }
 
-    addTokenToConfig(config = {}) {
+    addAccessTokenToConfig(config = {}) {
         if (typeof config.headers !== 'object') {
             config.headers = {}
         }
@@ -65,38 +60,38 @@ class ApiClient {
         const { method, endpoint, data, conf } = options
 
         if (methodRequiresData[method]) {
-            return this.client[method](endpoint, data, this.addTokenToConfig(conf))
+            return this.client[method](endpoint, data, this.addAccessTokenToConfig(conf))
         } else {
-            return this.client[method](endpoint, this.addTokenToConfig(conf))
+            return this.client[method](endpoint, this.addAccessTokenToConfig(conf))
         }
     }
 
     get(url, conf = {}) {
-        return this.client.get(url, this.addTokenToConfig(conf))
+        return this.client.get(url, this.addAccessTokenToConfig(conf))
     }
 
     delete(url, conf = {}) {
-        return this.client.delete(url, this.addTokenToConfig(conf))
+        return this.client.delete(url, this.addAccessTokenToConfig(conf))
     }
 
     head(url, conf = {}) {
-        return this.client.head(url, this.addTokenToConfig(conf))
+        return this.client.head(url, this.addAccessTokenToConfig(conf))
     }
 
     options(url, conf = {}) {
-        return this.client.options(url, this.addTokenToConfig(conf))
+        return this.client.options(url, this.addAccessTokenToConfig(conf))
     }
 
     post(url, data = {}, conf = {}) {
-        return this.client.post(url, data, this.addTokenToConfig(conf))
+        return this.client.post(url, data, this.addAccessTokenToConfig(conf))
     }
 
     put(url, data = {}, conf = {}) {
-        return this.client.put(url, data, this.addTokenToConfig(conf))
+        return this.client.put(url, data, this.addAccessTokenToConfig(conf))
     }
 
     patch(url, data = {}, conf = {}) {
-        return this.client.patch(url, data, this.addTokenToConfig(conf))
+        return this.client.patch(url, data, this.addAccessTokenToConfig(conf))
     }
 }
 

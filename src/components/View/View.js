@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React from 'react'
+
 import PropTypes from 'prop-types'
 import { Header } from "../Header";
 import { Spinner } from "../Spinner";
@@ -7,32 +8,26 @@ import { ScrollToTop } from '../ScrollToTop'
 
 import './_view.scss';
 
-class Main extends Component {
-    static propTypes = {
-        children: PropTypes.oneOfType([
-            PropTypes.arrayOf(PropTypes.node),
-            PropTypes.node,
-            PropTypes.string,
-        ]).isRequired,
-        layoutClass: PropTypes.string,
-    }
+const Main = ({ children, layoutClass }) =>
 
-    render() {
-        const { children, layoutClass } = this.props;
+    <div className={`view ${layoutClass}`}>
+        <Header />
+        <main>
+            <TrackVisibility>
+            {children}
+            </TrackVisibility>
+        </main>
+        <ScrollToTop />
+        <Spinner />
+    </div>
 
-        return (
-            <div className={`view ${layoutClass}`}>
-                <Header />
-                <main>
-                    <TrackVisibility>
-                    {children}
-                    </TrackVisibility>
-                </main>
-                <ScrollToTop />
-                <Spinner />
-            </div>
-        )
-    }
+Main.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+        PropTypes.string,
+    ]).isRequired,
+    layoutClass: PropTypes.string,
 }
 
 Main.defaultProps = {

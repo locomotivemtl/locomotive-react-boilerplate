@@ -1,14 +1,21 @@
 import React from 'react'
+
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+
 import { Component } from '../Component'
 import { Icon } from '../Icon'
-import { Link } from 'react-router-dom'
 
 import './_button.scss';
 
 class Button extends Component {
 
+    static propTypes = {
+        href: PropTypes.string,
+    }
+
     static defaultProps = {
-        href: '/'
+        href: '/',
     }
 
     render() {

@@ -1,18 +1,34 @@
 import routes from '../config/routes.json'
 
+function normalizeRouteData(data) {
+    const defaultData = {
+        id: '',
+        bind: '',
+        param: '',
+    }
+
+    if (typeof data === 'object') {
+        return { ...defaultData, ...data }
+    } else {
+        return { ...defaultData, ...{ id: data } }
+    }
+}
+
 /**
  * Render a route according to a route identifier and parameter data.
  */
-export const renderRoute = (routeId, substr = '', newSubStr = '') => {
-    if (!(routeId in routes)) {
+export const renderRoute = (routeData) => {
+    const { id, bind, param } = normalizeRouteData(routeData)
+
+    if (!(id in routes)) {
         return ''
     }
 
-    if (substr !== '' && newSubStr !== '') {
-        return routes[routeId].slug.replace(substr, newSubStr)
-    } else if (typeof routes[routeId].url !== 'undefined') {
-        return routes[routeId].url
+    if (bind !== '' && param !== '') {
+        return routes[id].slug.replace(`:${bind}`, param)
+    } else if (typeof routes[id].url !== 'undefined') {
+        return routes[id].url
     } else {
-        return routes[routeId].slug
+        return routes[id].slug
     }
 }

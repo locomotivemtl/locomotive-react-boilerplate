@@ -1,0 +1,10 @@
+[
+    {
+        "label": "Home",
+        "route": "home"
+    },
+    {
+        "label": "Test",
+        "route": "test"
+    }
+]

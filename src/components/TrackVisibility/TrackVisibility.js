@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import IntersectionObserver from 'intersection-observer-polyfill';
 
-// React component
-class TrackVisibility extends Component {
+class TrackVisibility extends React.Component {
 
     constructor(props) {
         super(props);
@@ -16,7 +15,7 @@ class TrackVisibility extends Component {
     componentDidMount() {
         this.observer = new IntersectionObserver(
             ([entry]) => {
-                if(entry.intersectionRatio >= 0.05) {
+                if (entry.intersectionRatio >= 0.05) {
                     this.setVisible();
                 }
             },
@@ -26,10 +25,10 @@ class TrackVisibility extends Component {
             }
         )
 
-        if(typeof this.ref.current === 'object') {
+        if (typeof this.ref.current === 'object') {
             setTimeout(() => {
                 this.observer.observe(this.ref.current);
-            },600)
+            }, 600)
         }
     }
 

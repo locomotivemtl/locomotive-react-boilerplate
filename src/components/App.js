@@ -1,18 +1,15 @@
-import './Style/index.scss';
-
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Switch, Route } from 'react-router-dom'
+
+import './Style/index.scss'
+
 import { ConnectedRouter } from 'connected-react-router'
 import _ from 'lodash'
-import {
-    userIsAuthenticatedAndCanViewRoute,
-    userIsAuthenticatedRedir,
-    userIsNotAuthenticatedRedir
-} from '../helpers/auth'
-import * as Views from '../views'
+import PropTypes from 'prop-types'
+import { Route, Switch } from 'react-router-dom'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+
 import routes from '../config/routes.json'
-import { TransitionGroup, CSSTransition } from "react-transition-group";
+import * as Views from '../views'
 
 // This component allows us to define all routes through routes.json.
 // Using this config format allows us to centralize slugs and their related view component.
@@ -20,24 +17,16 @@ const App = ({ history }) => {
     let views = []
     _.forOwn(routes, (route, key) => {
         const componentIdent = _.has(route, 'component') ? route.component : _.upperFirst(_.camelCase(`${key}-view`))
-        let component = null
-        if (route.isAuthenticated) {
-            if (typeof route.authRule === 'string') {
-                component = userIsAuthenticatedAndCanViewRoute(route.authRule)(Views[componentIdent])
-            } else {
-                component = userIsAuthenticatedRedir(Views[componentIdent])
-            }
-        } else if (route.isNotAuthenticated) {
-            component = userIsNotAuthenticatedRedir(Views[componentIdent])
-        } else {
-            component = Views[componentIdent]
-        }
+        const component = Views[componentIdent]
 
-        views.push({
-            id: key,
-            slug: route.slug,
-            component: component,
-        })
+        if (typeof component === 'undefined') {
+            console.error(`View ${componentIdent} could not be found.`)
+        } else {
+            views.push({
+                component: component,
+                slug: route.slug,
+            })
+        }
     })
 
     return (
@@ -51,9 +40,8 @@ const App = ({ history }) => {
                         key={location.key}
                     >
                         <Switch location={location}>
-                            {views.map(({ slug, component }, index) => (
-                            <Route key={index} exact path={slug} component={component} />
-                            ))}
+                            {views.map(({ component, slug }, index) =>
+                            <Route key={index} exact path={slug} component={component} />)}
                             <Route component={Views['NotFoundView']} />
                         </Switch>
                     </CSSTransition>
@@ -67,4 +55,4 @@ App.propTypes = {
     history: PropTypes.object.isRequired,
 }
 
-export default App;
+export default App
