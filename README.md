@@ -6,38 +6,54 @@
 <h1 align="center">Locomotive React Boilerplate</h1>
 <p align="center">Front-end boilerplate for React projects by Locomotive.</p>
 
-#locomotive-react-boilerplate
+## Installation
+```sh
+npm install
+```
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Usage
+```sh
+# watch
+npm run start
 
-## Available Scripts
+# build
+npm run build
 
-In the project directory, you can run:
+# build svg
+npm run build:svg
 
-### `npm run start`
+# build staging
+npm run build:staging
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# build production
+npm run build:production
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Components
+To create a component, you can duplicate the `Example` component.  
+- It imports its own scss file and extends `Component`.  
+- It accepts 3 props `option`, `utility` and `state`.  
+- These props will be formated and added to the component className via `this.state.classNames`.  
+- Options will be namespaced with `-`, utilities with `u-` and states with `is-`. 
+- You can split multiple classes with with `,` in each props.  
+- The class is updated on props change, example if you pass a state.
 
-### `npm run build:svg`
-Run svg-sprite-generator to generate a svg sprite
+```jsx
+<Example option="blue, delay1" utility="anim" state={this.state.example} />
+```
 
-### `npm run build:staging`
-Builds the app for staging to the `build` folder.<br>
+## Dependencies
+| Name       | 
+| ---------- |
+| [Redux]    |
+| [React Router] | 
+| [React Transition Group] | 
 
-### `npm run build:production`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+[Redux]: https://github.com/reduxjs/redux
+[React Router]: https://github.com/ReactTraining/react-router
+[React Transition Group]: https://github.com/reactjs/react-transition-group
 
 ## Learn More
+- The boilerplate is based on [Create React App](https://github.com/facebook/create-react-app).
+- It uses styles from our [Locomotive Boilerplate](https://github.com/locomotivemtl/locomotive-boilerplate).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
