@@ -1,33 +1,27 @@
 import React, { Component } from 'react'
-import { Main } from '../components/Main'
-import { Layout } from '../components/Layout'
-import { LayoutItem } from '../components/Layout'
-import { Spinner } from "../components/Spinner";
-import { TrackVisibility } from '../components/TrackVisibility'
+import { View } from '../components/View'
+import { Container } from '../components/Container'
+import { Heading } from '../components/Heading'
+import { Layout, LayoutItem } from '../components/Layout'
 
 class HomeView extends Component {
 
     render() {
-
         return (
-            <Main>
-                <div className="u-padding">
-                    <TrackVisibility>
-                        <h1 className="u-anim-scroll -parent -delay-1">Home view</h1>
+            <View>
+                <Container>
+                    <Heading option="delay1" utility="anim" el="h1">Home view</Heading>
 
-                        <Layout overrideClass="-gutter-small">
-                            <LayoutItem overrideClass="u-1/2@from-small u-anim-scroll -parent -delay-2">
-                                Layout example
-                            </LayoutItem>
-                            <LayoutItem overrideClass="u-1/2@from-small u-anim-scroll -parent -delay-3">
-                                Layout example
-                            </LayoutItem>
-                        </Layout>
-                    </TrackVisibility>
-                </div>
-
-                <Spinner />
-            </Main>
+                    <Layout option="gutter">
+                        <LayoutItem option="delay2" utility="1/2@from-small, anim">
+                            Layout example
+                        </LayoutItem>
+                        <LayoutItem option="delay3" utility="1/2@from-small, anim">
+                            Layout example
+                        </LayoutItem>
+                    </Layout>
+                </Container>
+            </View>
         )
     }
 }

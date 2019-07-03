@@ -1,22 +1,17 @@
 import React, { Component } from 'react'
-import { Main } from '../components/Main'
-import { Spinner } from "../components/Spinner";
-import { TrackVisibility } from '../components/TrackVisibility'
+import { View } from '../components/View'
+import { Container } from '../components/Container'
+import { Heading } from '../components/Heading'
 
 class HomeView extends Component {
 
     render() {
-
         return (
-            <Main>
-                <div className="u-padding">
-                    <TrackVisibility overrideClass="u-anim-scroll -delay-1">
-                        <h1>Test view</h1>
-
-                    </TrackVisibility>
-                </div>
-                <Spinner />
-            </Main>
+            <View>
+                <Container>
+                    <Heading option="delay1" utility="anim" el="h1">Test view</Heading>
+                </Container>
+            </View>
         )
     }
 }
