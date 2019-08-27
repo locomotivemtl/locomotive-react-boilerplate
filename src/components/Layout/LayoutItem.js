@@ -3,11 +3,7 @@ import { Component } from '../Component'
 
 class LayoutItem extends Component {
     render() {
-        return (
-            <div className={`layout_item${this.state.classNames}`}>
-                {this.props.children}
-            </div>
-        )
+        return <div className={`layout_item${this.state.classNames}`}>{this.props.children}</div>
     }
 }
 

@@ -31,22 +31,25 @@ const App = ({ history }) => {
 
     return (
         <ConnectedRouter history={history}>
-            <Route render={({ location }) => (
-                <TransitionGroup>
-                    <CSSTransition
-                        timeout={{enter: 600, exit: 600}}
-                        classNames="has-transition"
-                        appear
-                        key={location.key}
-                    >
-                        <Switch location={location}>
-                            {views.map(({ component, slug }, index) =>
-                            <Route key={index} exact path={slug} component={component} />)}
-                            <Route component={Views['NotFoundView']} />
-                        </Switch>
-                    </CSSTransition>
-                </TransitionGroup>
-            )} />
+            <Route
+                render={({ location }) => (
+                    <TransitionGroup>
+                        <CSSTransition
+                            timeout={{ enter: 600, exit: 600 }}
+                            classNames="has-transition"
+                            appear
+                            key={location.key}
+                        >
+                            <Switch location={location}>
+                                {views.map(({ component, slug }, index) => (
+                                    <Route key={index} exact path={slug} component={component} />
+                                ))}
+                                <Route component={Views['NotFoundView']} />
+                            </Switch>
+                        </CSSTransition>
+                    </TransitionGroup>
+                )}
+            />
         </ConnectedRouter>
     )
 }

@@ -15,22 +15,20 @@ import {
 const getAuthState = function() {
     try {
         return {
-            tokens: JSON.parse(localStorage.getItem('state.auth.tokens')) || undefined
+            tokens: JSON.parse(localStorage.getItem('state.auth.tokens')) || undefined,
         }
     } catch (error) {
         return {}
     }
 }
 
-
 const initialState = {
     // isAuthenticated: false,
     isAuthenticated: true,
     tokens: {},
     user: {},
-    ...getAuthState()
+    ...getAuthState(),
 }
-
 
 export function auth(state = initialState, action) {
     switch (action.type) {
@@ -66,7 +64,7 @@ export function auth(state = initialState, action) {
          */
         case DELETE_USER_LOGIN_REQUEST:
             return {
-                ...state
+                ...state,
             }
         case AUTH_SIGN_OUT:
         case DELETE_USER_LOGIN_SUCCESS:

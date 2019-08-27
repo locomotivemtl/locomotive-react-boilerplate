@@ -4,9 +4,12 @@ import { Container } from '../components/Container'
 import { Heading } from '../components/Heading'
 import { View } from '../components/View'
 
-export default () =>
+export default () => (
     <View>
         <Container>
-            <Heading option="delay1" utility="anim" el="h1">Page not found</Heading>
+            <Heading option="delay1" utility="anim" el="h1">
+                Page not found
+            </Heading>
         </Container>
     </View>
+)

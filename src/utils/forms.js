@@ -5,7 +5,7 @@ export function formatFormMessageItems(items) {
         return items
     } else {
         if (typeof items.message === 'string') {
-            return [ items ]
+            return [items]
         } else {
             return []
         }

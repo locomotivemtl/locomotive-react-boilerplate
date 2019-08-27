@@ -17,7 +17,7 @@ function normalizeRouteData(data) {
 /**
  * Render a route according to a route identifier and parameter data.
  */
-export const renderRoute = (routeData) => {
+export const renderRoute = routeData => {
     const { id, bind, param } = normalizeRouteData(routeData)
 
     if (!(id in routes)) {

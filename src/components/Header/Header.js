@@ -9,10 +9,9 @@ import { renderNavItems } from '../../utils/nav'
 import { Component } from '../Component'
 import { Container } from '../Container'
 
-import './_header.scss';
+import './_header.scss'
 
 class Header extends Component {
-
     static propTypes = {
         navItems: PropTypes.array.isRequired,
     }
@@ -24,12 +23,11 @@ class Header extends Component {
                 <Container>
                     <nav>
                         <ul>
-                            {navItems.map((item, index) =>
-                            <li>
-                                <RouterLink to={item.url}>
-                                    {item.label}
-                                </RouterLink>
-                            </li>)}
+                            {navItems.map((item, index) => (
+                                <li>
+                                    <RouterLink to={item.url}>{item.label}</RouterLink>
+                                </li>
+                            ))}
                         </ul>
                     </nav>
                 </Container>
@@ -40,11 +38,13 @@ class Header extends Component {
 
 const mapStateToProps = state => {
     const {
-        router: { location: { pathname } }
+        router: {
+            location: { pathname },
+        },
     } = state
 
     return {
-        navItems: renderNavItems(pathname)
+        navItems: renderNavItems(pathname),
     }
 }
 

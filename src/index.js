@@ -16,11 +16,8 @@ import createRootReducer from './reducers'
 import App from './components/App'
 
 const history = createBrowserHistory()
-const middleware = [ routerMiddleware(history), createLogger({ collapsed: true }), thunk ]
-const store = createStore(
-    createRootReducer(history),
-    applyMiddleware(...middleware),
-)
+const middleware = [routerMiddleware(history), createLogger({ collapsed: true }), thunk]
+const store = createStore(createRootReducer(history), applyMiddleware(...middleware))
 
 svg4everybody()
 render(

@@ -69,8 +69,5 @@ function parseNavItemsRenderUrl(items) {
  * @return {array}
  */
 export function renderNavItems(pathname) {
-    return parseNavItemsForActiveState(
-        parseNavItemsRenderUrl([ ...navConfig ]),
-        pathname
-    )
+    return parseNavItemsForActiveState(parseNavItemsRenderUrl([...navConfig]), pathname)
 }

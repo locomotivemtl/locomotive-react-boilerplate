@@ -12,27 +12,30 @@ const methodRequiresData = {
 }
 
 class ApiClient {
-
     constructor() {
         this.accessToken = null
         const baseURL = `${process.env.REACT_APP_API_URL}/${process.env.REACT_APP_API_VERSION}/`
-        this.client = setup(this.addAccessTokenToConfig({
-            baseURL: baseURL,
-            headers: {
-                'Cache-Control': 'no-cache',
-                'Content-Type': 'application/json',
-            },
-            json: true,
-            cache: {
-                debug: true
-            }
-        }))
+        this.client = setup(
+            this.addAccessTokenToConfig({
+                baseURL: baseURL,
+                headers: {
+                    'Cache-Control': 'no-cache',
+                    'Content-Type': 'application/json',
+                },
+                json: true,
+                cache: {
+                    debug: true,
+                },
+            })
+        )
         this.client.interceptors.response.use(
-            response => { return response },
+            response => {
+                return response
+            },
             error => {
                 /** Makes sure our actions always receive errors in the same format. */
                 if (typeof error.response === 'undefined') {
-                    error.response = { data: [ { message: 'A network error occured.' } ] }
+                    error.response = { data: [{ message: 'A network error occured.' }] }
                 }
                 return Promise.reject(error)
             }
@@ -94,6 +97,5 @@ class ApiClient {
         return this.client.patch(url, data, this.addAccessTokenToConfig(conf))
     }
 }
-
 
 export const apiClient = new ApiClient()

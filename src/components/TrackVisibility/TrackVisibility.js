@@ -1,22 +1,30 @@
 import React from 'react'
-import IntersectionObserver from 'intersection-observer-polyfill';
+
+import classNames from 'classnames'
+import IntersectionObserver from 'intersection-observer-polyfill'
+import PropTypes from 'prop-types'
 
 class TrackVisibility extends React.Component {
-
-    constructor(props) {
-        super(props);
-
-        this.ref = React.createRef();
-        this.state = {
-            isVisible: false
-        }
+    state = {
+        isVisible: false,
+        hasAppeared: false,
     }
 
+    ref = React.createRef()
+
     componentDidMount() {
+        const { onEnter, onLeave } = this.props
         this.observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.intersectionRatio >= 0.05) {
-                    this.setVisible();
+                if (entry.intersectionRatio >= 0.05 && entry.intersectionRatio <= 1.05) {
+                    this.setVisible(true)
+                    onEnter()
+                    this.setState({
+                        hasAppeared: true,
+                    })
+                } else {
+                    this.setVisible(false)
+                    onLeave()
                 }
             },
             {
@@ -25,36 +33,45 @@ class TrackVisibility extends React.Component {
             }
         )
 
-        if (typeof this.ref.current === 'object') {
-            setTimeout(() => {
-                this.observer.observe(this.ref.current);
-            }, 600)
-        }
+        this.observer.observe(this.ref.current)
     }
 
     componentWillUnmount() {
-        if(typeof this.ref.current === 'object') {
-            this.observer.unobserve(this.ref.current);
-        }
+        this.observer.unobserve(this.ref.current)
     }
 
-    setVisible() {
+    setVisible(flag) {
+        this.props.onChange(flag)
+
         this.setState({
-            isVisible: true
+            isVisible: flag,
         })
     }
 
     render() {
-        const { children, overrideClass } = this.props;
-        const { isVisible } = this.state;
+        const { children, overrideClass } = this.props
+        const { hasAppeared, isVisible } = this.state
+
+        const classes = classNames(overrideClass, { 'is-show': hasAppeared }, { 'is-visible': isVisible })
 
         return (
-            <div ref={this.ref} className={(isVisible) ? `${overrideClass} is-show` : `${overrideClass}`}>
+            <div ref={this.ref} className={classes}>
                 {children}
             </div>
         )
     }
 }
 
-export default TrackVisibility
+TrackVisibility.propTypes = {
+    onChange: PropTypes.func,
+    onEnter: PropTypes.func,
+    onLeave: PropTypes.func,
+}
 
+TrackVisibility.defaultProps = {
+    onChange: () => {},
+    onEnter: () => {},
+    onLeave: () => {},
+}
+
+export default TrackVisibility
