@@ -7,7 +7,12 @@ class Content extends Component {
     render() {
         const { data } = this.props
 
-        return <div className={`content${this.state.classNames}`} dangerouslySetInnerHTML={{ __html: data }}></div>
+        return (
+            <div
+                className={`content${this.state.classNames}`}
+                dangerouslySetInnerHTML={{ __html: data }}
+            ></div>
+        )
     }
 }
 

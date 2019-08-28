@@ -7,7 +7,7 @@ import { View } from '../components/View'
 export default () => (
     <View>
         <Container>
-            <Heading option="delay1" utility="anim" el="h1">
+            <Heading el="h1" option={['delay1']} utility={['anim']}>
                 Page not found
             </Heading>
         </Container>

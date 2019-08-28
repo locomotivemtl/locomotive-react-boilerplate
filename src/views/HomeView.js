@@ -8,7 +8,7 @@ import { View } from '../components/View'
 const HomeView = () => (
     <View>
         <Container>
-            <Heading option="delay1" utility="anim" el="h1">
+            <Heading option={['delay1', 'tits']} utility={['anim']} el="h1">
                 Home view
             </Heading>
 
