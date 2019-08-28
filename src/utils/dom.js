@@ -1,6 +1,7 @@
 import classNames from 'classnames'
 
-export const renderClasses = (baseClass = '', props = {}, extraClasses = {}) => {
+export const renderClasses = (baseClass = '', props = {}) => {
+    const { className: extraClasses } = props
     props = {
         option: [],
         utility: [],
@@ -13,6 +14,6 @@ export const renderClasses = (baseClass = '', props = {}, extraClasses = {}) => 
         props.option.map(option => `-${option}`),
         props.utility.map(utility => `u-${utility}`),
         props.status.map(status => `is-${status}`),
-        {...extraClasses}
+        extraClasses
     )
 }
