@@ -4,12 +4,14 @@ import { Container } from '../components/Container'
 import { Heading } from '../components/Heading'
 import { View } from '../components/View'
 
-export default () => (
+const TestView = () => (
     <View>
         <Container>
-            <Heading classProps={{ option: ['delay1'], utility: ['anim'] }} el="h1">
+            <Heading el="h1" option={['delay1']} utility={['anim']}>
                 Test view
             </Heading>
         </Container>
     </View>
 )
+
+export default TestView

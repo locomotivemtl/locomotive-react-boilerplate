@@ -4,7 +4,7 @@ import { Container } from '../components/Container'
 import { Heading } from '../components/Heading'
 import { View } from '../components/View'
 
-export default () => (
+const NotFoundView = () => (
     <View>
         <Container>
             <Heading el="h1" option={['delay1']} utility={['anim']}>
@@ -13,3 +13,5 @@ export default () => (
         </Container>
     </View>
 )
+
+export default NotFoundView

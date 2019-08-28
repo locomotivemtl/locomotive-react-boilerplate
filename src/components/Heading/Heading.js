@@ -6,7 +6,7 @@ import { renderClasses } from '../../utils/dom'
 
 import './_heading.scss'
 
-const Heading = ({ children, el, isShit, ...classProps }) => {
+const Heading = ({ children, el, ...classProps }) => {
     const El = el || 'p'
     return <El className={renderClasses('heading', classProps)}>{children}</El>
 }
@@ -17,12 +17,7 @@ Heading.propTypes = {
         PropTypes.node,
         PropTypes.string,
     ]).isRequired,
-    isShit: PropTypes.bool,
     el: PropTypes.string,
-}
-
-Heading.defaultProps = {
-    isShit: false
 }
 
 export default Heading
