@@ -52,7 +52,11 @@ class TrackVisibility extends React.Component {
         const { children, overrideClass } = this.props
         const { hasAppeared, isVisible } = this.state
 
-        const classes = classNames(overrideClass, { 'is-show': hasAppeared }, { 'is-visible': isVisible })
+        const classes = classNames(
+            overrideClass,
+            { 'is-show': hasAppeared },
+            { 'is-visible': isVisible }
+        )
 
         return (
             <div ref={this.ref} className={classes}>

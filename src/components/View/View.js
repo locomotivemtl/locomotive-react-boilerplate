@@ -21,7 +21,11 @@ const Main = ({ children, layoutClass }) => (
 )
 
 Main.propTypes = {
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node, PropTypes.string]).isRequired,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+        PropTypes.string,
+    ]).isRequired,
     layoutClass: PropTypes.string,
 }
 

@@ -55,7 +55,9 @@ class ApiClient {
         if (typeof config.headers !== 'object') {
             config.headers = {}
         }
-        config.headers['Authorization'] = `Bearer ${_.isEmpty(this.accessToken) ? '' : this.accessToken}`
+        config.headers['Authorization'] = `Bearer ${
+            _.isEmpty(this.accessToken) ? '' : this.accessToken
+        }`
         return config
     }
 

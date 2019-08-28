@@ -9,7 +9,12 @@ class FormInput extends Component {
         if (type === 'checkbox') {
             input = (
                 <div>
-                    <input className={`form_checkbox${this.state.classNames}`} type="checkbox" id={id} name={name} />
+                    <input
+                        className={`form_checkbox${this.state.classNames}`}
+                        type="checkbox"
+                        id={id}
+                        name={name}
+                    />
                     <label className="form_checkboxLabel" htmlFor={id}>
                         {text}
                     </label>

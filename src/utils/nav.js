@@ -38,7 +38,8 @@ function parseNavItemsForActiveState(items, pathname) {
 
         if (_.isArray(item.items)) {
             item.items = parseNavItemsForActiveState(item.items, pathname)
-            const hasActiveNavItems = item.items.filter(item => item.isActive || item.hasActiveNavItems).length > 0
+            const hasActiveNavItems =
+                item.items.filter(item => item.isActive || item.hasActiveNavItems).length > 0
             item.hasActiveNavItems = hasActiveNavItems
         }
 

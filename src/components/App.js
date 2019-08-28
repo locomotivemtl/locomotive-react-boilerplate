@@ -16,7 +16,9 @@ import * as Views from '../views'
 const App = ({ history }) => {
     let views = []
     _.forOwn(routes, (route, key) => {
-        const componentIdent = _.has(route, 'component') ? route.component : _.upperFirst(_.camelCase(`${key}-view`))
+        const componentIdent = _.has(route, 'component')
+            ? route.component
+            : _.upperFirst(_.camelCase(`${key}-view`))
         const component = Views[componentIdent]
 
         if (typeof component === 'undefined') {

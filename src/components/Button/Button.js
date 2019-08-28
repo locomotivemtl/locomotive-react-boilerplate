@@ -22,7 +22,12 @@ class Button extends Component {
         const El = el || Link
 
         return (
-            <El className={`button${this.state.classNames}`} to={href} type={type} onClick={onClick}>
+            <El
+                className={`button${this.state.classNames}`}
+                to={href}
+                type={type}
+                onClick={onClick}
+            >
                 {icon && (
                     <span className="button_icon">
                         <Icon name={icon} />
