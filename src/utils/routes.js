@@ -25,10 +25,19 @@ export const renderRoute = routeData => {
     }
 
     if (bind !== '' && param !== '') {
-        return routes[id].slug.replace(`:${bind}`, param)
+        return routes[id].path.replace(`:${bind}`, param)
     } else if (typeof routes[id].url !== 'undefined') {
         return routes[id].url
     } else {
-        return routes[id].slug
+        return routes[id].path
     }
+}
+
+/**
+ * Render an absolute URL according to a route identifier and parameter data.
+ */
+export const renderAbsoluteRoute = routeData => {
+    const origin = window.location.origin
+    const route = renderRoute(routeData)
+    return `${origin}${route}`
 }

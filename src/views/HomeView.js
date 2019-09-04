@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { Button } from '../components/Button'
-import { Container } from '../components/Container'
 import { Heading } from '../components/Heading'
 import { Layout, LayoutItem } from '../components/Layout'
 import { View } from '../components/View'
+import { Wrapper } from '../components/Wrapper'
 
 class HomeView extends React.Component {
     handleButtonClick = event => {
@@ -14,7 +14,7 @@ class HomeView extends React.Component {
     render() {
         return (
             <View>
-                <Container>
+                <Wrapper>
                     <Heading el="h1" option={['delay1']} utility={['anim']}>
                         Home view
                     </Heading>
@@ -28,7 +28,7 @@ class HomeView extends React.Component {
                             Layout example
                         </LayoutItem>
                     </Layout>
-                </Container>
+                </Wrapper>
             </View>
         )
     }

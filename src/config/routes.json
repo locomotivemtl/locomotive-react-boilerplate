@@ -1,8 +1,8 @@
 {
     "home": {
-        "slug": "/"
+        "path": "/"
     },
     "test": {
-        "slug": "/test"
+        "path": "/test"
     }
 }

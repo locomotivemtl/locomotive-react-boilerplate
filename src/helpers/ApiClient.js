@@ -13,51 +13,56 @@ const methodRequiresData = {
 
 class ApiClient {
     constructor() {
-        this.accessToken = null
         const baseURL = `${process.env.REACT_APP_API_URL}/${process.env.REACT_APP_API_VERSION}/`
-        this.client = setup(
-            this.addAccessTokenToConfig({
-                baseURL: baseURL,
-                headers: {
-                    'Cache-Control': 'no-cache',
-                    'Content-Type': 'application/json',
+        this.axiosClient = setup({
+            baseURL: baseURL,
+            headers: {
+                'Cache-Control': 'no-cache',
+                'Content-Type': 'application/json',
+            },
+            json: true,
+            cache: {
+                // debug: true,
+                exclude: {
+                    paths: [`^${baseURL}users/self`],
                 },
-                json: true,
-                cache: {
-                    debug: true,
-                },
-            })
-        )
-        this.client.interceptors.response.use(
+            },
+        })
+        this.axiosClient.interceptors.response.use(
             response => {
                 return response
             },
             error => {
                 /** Makes sure our actions always receive errors in the same format. */
                 if (typeof error.response === 'undefined') {
-                    error.response = { data: [{ message: 'A network error occured.' }] }
+                    error.response = {
+                        data: [{ message: 'A network error occurred.' }],
+                    }
                 }
                 return Promise.reject(error)
             }
         )
     }
 
+    setStore(store) {
+        this.store = store
+    }
+
     clearCache(endpoint) {
         if (typeof endpoint === 'string') {
-            const url = this.client.defaults.baseURL + endpoint
-            this.client.cache.removeItem(url)
+            const url = this.axiosClient.defaults.baseURL + endpoint
+            this.axiosClient.cache.removeItem(url)
         } else {
-            this.client.cache.clear()
+            this.axiosClient.cache.clear()
         }
     }
 
-    addAccessTokenToConfig(config = {}) {
+    addTokenToConfig(config = {}) {
         if (typeof config.headers !== 'object') {
             config.headers = {}
         }
-        config.headers['Authorization'] = `Bearer ${
-            _.isEmpty(this.accessToken) ? '' : this.accessToken
-        }`
+        const accessToken = (this.store.getState().auth.tokens || {}).accessToken
+        config.headers['Authorization'] = `Bearer ${_.isEmpty(accessToken) ? '' : accessToken}`
         return config
     }
 
@@ -65,38 +70,38 @@ class ApiClient {
         const { method, endpoint, data, conf } = options
 
         if (methodRequiresData[method]) {
-            return this.client[method](endpoint, data, this.addAccessTokenToConfig(conf))
+            return this.axiosClient[method](endpoint, data, this.addTokenToConfig(conf))
         } else {
-            return this.client[method](endpoint, this.addAccessTokenToConfig(conf))
+            return this.axiosClient[method](endpoint, this.addTokenToConfig(conf))
         }
     }
 
     get(url, conf = {}) {
-        return this.client.get(url, this.addAccessTokenToConfig(conf))
+        return this.axiosClient.get(url, this.addTokenToConfig(conf))
     }
 
     delete(url, conf = {}) {
-        return this.client.delete(url, this.addAccessTokenToConfig(conf))
+        return this.axiosClient.delete(url, this.addTokenToConfig(conf))
     }
 
     head(url, conf = {}) {
-        return this.client.head(url, this.addAccessTokenToConfig(conf))
+        return this.axiosClient.head(url, this.addTokenToConfig(conf))
     }
 
     options(url, conf = {}) {
-        return this.client.options(url, this.addAccessTokenToConfig(conf))
+        return this.axiosClient.options(url, this.addTokenToConfig(conf))
     }
 
     post(url, data = {}, conf = {}) {
-        return this.client.post(url, data, this.addAccessTokenToConfig(conf))
+        return this.axiosClient.post(url, data, this.addTokenToConfig(conf))
     }
 
     put(url, data = {}, conf = {}) {
-        return this.client.put(url, data, this.addAccessTokenToConfig(conf))
+        return this.axiosClient.put(url, data, this.addTokenToConfig(conf))
     }
 
     patch(url, data = {}, conf = {}) {
-        return this.client.patch(url, data, this.addAccessTokenToConfig(conf))
+        return this.axiosClient.patch(url, data, this.addTokenToConfig(conf))
     }
 }
 
