@@ -30,24 +30,20 @@ npm run build:production
 ```
 
 ## Components
-To create a component, you can duplicate the `Example` component.  
-- It imports its own scss file and extends `Component`.  
-- It accepts 3 props `option`, `utility` and `state`.  
-- These props will be formated and added to the component className with `this.state.classNames`.  
-- Options will be namespaced with `-`, utilities with `u-` and states with `is-`. 
-- You can split multiple classes with with `,` in each props.  
-- The class is updated on props change, example if you pass a state.
-
-```jsx
-<Example option="blue, delay1" utility="anim" state={this.state.example} />
-```
+To create a component, you can duplicate the `Example` component.
+- It's defined as a functional component and imports its own scss file.
+- It accepts 3 CSS class related props: `option`, `utility` and `status`.
+- These props will be formated and added to the component className with the `renderClasses` utility.
+- Options will be namespaced with `-`, utilities with `u-` and statuses with `is-`.
+- You must defined your class props as arrays.
+- Any changes to these class props will trigger a component render.
 
 ## Dependencies
-| Name       | 
+| Name       |
 | ---------- |
 | [Redux]    |
-| [React Router] | 
-| [React Transition Group] | 
+| [React Router] |
+| [React Transition Group] |
 
 [Redux]: https://github.com/reduxjs/redux
 [React Router]: https://github.com/ReactTraining/react-router
