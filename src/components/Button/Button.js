@@ -12,11 +12,12 @@ import './_button.scss'
 
 const Button = ({ children, icon, isExternalLink, href, onClick, route, ...classProps }) => {
     const classes = renderClasses('button', classProps)
-    const iconEl  = icon !== null ? (
-        <span className="button_icon">
-            <Icon name={icon} />
-        </span>
-    ) : null
+    const iconEl =
+        icon !== null ? (
+            <span className="button_icon">
+                <Icon name={icon} />
+            </span>
+        ) : null
 
     return route !== null ? (
         <RouterLink className={classes} to={renderRoute(route)}>
@@ -37,7 +38,11 @@ const Button = ({ children, icon, isExternalLink, href, onClick, route, ...class
 }
 
 Button.propTypes = {
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node, PropTypes.string]).isRequired,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+        PropTypes.string,
+    ]).isRequired,
     href: PropTypes.string,
     icon: PropTypes.string,
     isExternalLink: PropTypes.bool,

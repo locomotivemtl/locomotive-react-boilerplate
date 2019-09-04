@@ -1,19 +1,21 @@
 import React from 'react'
-import { Component } from '../Component'
+
+import PropTypes from 'prop-types'
+
+import { renderClasses } from '../../utils/dom'
 
 import './_content.scss'
 
-class Content extends Component {
-    render() {
-        const { data } = this.props
+const Content = ({ children, ...classProps }) => (
+    <div className={renderClasses('content', classProps)}>{children}</div>
+)
 
-        return (
-            <div
-                className={`content${this.state.classNames}`}
-                dangerouslySetInnerHTML={{ __html: data }}
-            ></div>
-        )
-    }
+Content.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+        PropTypes.string,
+    ]).isRequired,
 }
 
 export default Content

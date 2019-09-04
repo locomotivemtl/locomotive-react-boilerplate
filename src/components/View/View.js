@@ -9,7 +9,7 @@ import { TrackVisibility } from '../TrackVisibility'
 
 import './_view.scss'
 
-const Main = ({ children, layoutClass }) => (
+const View = ({ children, layoutClass }) => (
     <div className={`view ${layoutClass}`}>
         <Header />
         <main>
@@ -20,7 +20,7 @@ const Main = ({ children, layoutClass }) => (
     </div>
 )
 
-Main.propTypes = {
+View.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node,
@@ -29,8 +29,8 @@ Main.propTypes = {
     layoutClass: PropTypes.string,
 }
 
-Main.defaultProps = {
+View.defaultProps = {
     layoutClass: '',
 }
 
-export default Main
+export default View

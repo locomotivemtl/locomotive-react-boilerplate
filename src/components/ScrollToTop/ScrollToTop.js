@@ -1,6 +1,6 @@
-import { Component } from 'react'
+import React from 'react'
 
-export default class extends Component {
+export default class extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0)
     }

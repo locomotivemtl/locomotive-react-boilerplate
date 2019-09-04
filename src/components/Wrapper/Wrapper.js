@@ -2,11 +2,11 @@ import React from 'react'
 
 import PropTypes from 'prop-types'
 
-import './_form.scss'
+import './_wrapper.scss'
 
-const Form = ({ children }) => <form className="form">{children}</form>
+const Wrapper = ({ children }) => <div className="wrapper">{children}</div>
 
-Form.propTypes = {
+Wrapper.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node,
@@ -14,4 +14,4 @@ Form.propTypes = {
     ]).isRequired,
 }
 
-export default Form
+export default Wrapper
