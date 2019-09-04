@@ -1,12 +1,23 @@
 import React from 'react'
-import { Component } from '../Component'
+
+import PropTypes from 'prop-types'
+
+import { renderClasses } from '../../utils/dom'
 
 import './_example.scss'
 
-class Example extends Component {
-    render() {
-        return <div className={`example${this.state.classNames}`}></div>
-    }
+const Example = ({ children, ...classProps }) => {
+    const classes = renderClasses('example', classProps)
+
+    return <div className={classes}>{children}</div>
+}
+
+Example.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+        PropTypes.string,
+    ]).isRequired,
 }
 
 export default Example

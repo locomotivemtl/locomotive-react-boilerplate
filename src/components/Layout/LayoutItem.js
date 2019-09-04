@@ -1,10 +1,19 @@
 import React from 'react'
-import { Component } from '../Component'
 
-class LayoutItem extends Component {
-    render() {
-        return <div className={`layout_item${this.state.classNames}`}>{this.props.children}</div>
-    }
+import PropTypes from 'prop-types'
+
+import { renderClasses } from '../../utils/dom'
+
+const LayoutItem = ({ children, ...classProps }) => (
+    <div className={renderClasses('layout_item', classProps)}>{children}</div>
+)
+
+LayoutItem.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+        PropTypes.string,
+    ]).isRequired,
 }
 
 export default LayoutItem

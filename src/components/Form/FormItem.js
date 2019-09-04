@@ -1,10 +1,21 @@
 import React from 'react'
-import { Component } from '../Component'
 
-class FormLabel extends Component {
-    render() {
-        return <div className={`form_item${this.state.classNames}`}>{this.props.children}</div>
-    }
+import PropTypes from 'prop-types'
+
+import { renderClasses } from '../../utils/dom'
+
+const FormItem = ({ children, ...classProps }) => {
+    const classes = renderClasses('form_item', classProps)
+
+    return <div className={classes}>{children}</div>
 }
 
-export default FormLabel
+FormItem.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+        PropTypes.string,
+    ]).isRequired,
+}
+
+export default FormItem

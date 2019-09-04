@@ -1,16 +1,30 @@
 import React from 'react'
-import { Component } from '../Component'
 
-class FormLabel extends Component {
-    render() {
-        const { text, name } = this.props
+import PropTypes from 'prop-types'
 
-        return (
-            <label className={`form_label${this.state.classNames}`} htmlFor={name}>
-                {text}
-            </label>
-        )
-    }
+import { renderClasses } from '../../utils/dom'
+
+const FormLabel = ({ children, inputId, ...classProps }) => {
+    const classes = renderClasses('form_label', classProps)
+
+    return (
+        <label className={classes} htmlFor={inputId}>
+            {children}
+        </label>
+    )
+}
+
+FormLabel.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+        PropTypes.string,
+    ]).isRequired,
+    inputId: PropTypes.string,
+}
+
+FormLabel.defaultProps = {
+    inputId: null,
 }
 
 export default FormLabel

@@ -4,32 +4,30 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link as RouterLink } from 'react-router-dom'
 
+import { renderClasses } from '../../utils/dom'
 import { renderNavItems } from '../../utils/nav'
 
-import { Component } from '../Component'
-import { Container } from '../Container'
+import { Wrapper } from '../Wrapper'
 
 import './_header.scss'
 
-class Header extends Component {
-    render() {
-        const { navItems } = this.props
-        return (
-            <header className={`header${this.state.classNames}`}>
-                <Container>
-                    <nav>
-                        <ul>
-                            {navItems.map((item, index) => (
-                                <li key={index}>
-                                    <RouterLink to={item.url}>{item.label}</RouterLink>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
-                </Container>
-            </header>
-        )
-    }
+const Header = ({ navItems, ...classProps }) => {
+    const classes = renderClasses('header', classProps)
+    return (
+        <header className={classes}>
+            <Wrapper>
+                <nav>
+                    <ul>
+                        {navItems.map((item, index) => (
+                            <li key={index}>
+                                <RouterLink to={item.url}>{item.label}</RouterLink>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            </Wrapper>
+        </header>
+    )
 }
 
 Header.propTypes = {

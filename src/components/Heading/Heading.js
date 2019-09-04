@@ -1,14 +1,27 @@
 import React from 'react'
-import { Component } from '../Component'
+
+import PropTypes from 'prop-types'
+
+import { renderClasses } from '../../utils/dom'
 
 import './_heading.scss'
 
-class Heading extends Component {
-    render() {
-        const El = this.props.el || 'p'
+const Heading = ({ children, el, ...classProps }) => {
+    const El = el
+    return <El className={renderClasses('heading', classProps)}>{children}</El>
+}
 
-        return <El className={`heading${this.state.classNames}`}>{this.props.children}</El>
-    }
+Heading.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+        PropTypes.string,
+    ]).isRequired,
+    el: PropTypes.string,
+}
+
+Heading.defaultProps = {
+    el: 'p',
 }
 
 export default Heading
