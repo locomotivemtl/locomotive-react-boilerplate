@@ -12,7 +12,7 @@
         "immutable": "^4.0.0-rc.12",
         "intersection-observer-polyfill": "^0.1.0",
         "lodash": "^4.17.14",
-        "node-sass": "^4.0.0",
+        "node-sass": "^7.0.0",
         "react": "^16.0.0",
         "react-dom": "^16.0.0",
         "react-redux": "^6.0.0",
